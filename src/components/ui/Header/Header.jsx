@@ -40,7 +40,7 @@ const Header = () => {
   });
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
+    <Slide appear={false} direction="down" in={!trigger} component="header">
       <AppBar>
         <Container maxWidth="lg">
           <Toolbar>
