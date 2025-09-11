@@ -28,6 +28,7 @@ export default defineConfig([
       'react/prop-types': 'off',
       'react/jsx-key': 'warn',
       'prettier/prettier': 'warn',
+      'react/prop-types': 0,
     },
   },
 ]);
