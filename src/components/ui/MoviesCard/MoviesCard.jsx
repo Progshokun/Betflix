@@ -1,0 +1,49 @@
+import { Box, Link, Rating, Stack, Tooltip, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+
+import styles from './MoviesCard.module.css';
+
+const MoviesCard = ({ movie }) => {
+  return (
+    <>
+      <Stack>
+        <RouterLink
+          to={`/movie/${movie.kinopoiskId}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <img
+            src={movie.posterUrlPreview}
+            alt={movie.nameRu}
+            className={styles.img}
+          />
+          <Typography
+            variant="h6"
+            textAlign="center"
+            color="black"
+            mt={1}
+            sx={{ width: 200 }}
+          >
+            {movie.nameRu ? movie.nameRu : movie.nameEn}
+          </Typography>
+          {movie.ratingKinopoisk && (
+            <Stack alignItems="center">
+              <Tooltip title={`${movie.ratingKinopoisk} / 10`} arrow>
+                <Box>
+                  <Rating
+                    name="read-only "
+                    precision={0.2}
+                    defaultValue={movie.ratingKinopoisk / 2}
+                    size="small"
+                    readOnly
+                  />
+                </Box>
+              </Tooltip>
+            </Stack>
+          )}
+        </RouterLink>
+      </Stack>
+    </>
+  );
+};
+
+export default MoviesCard;
