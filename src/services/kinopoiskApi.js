@@ -18,9 +18,20 @@ export const kinopoiskApi = createApi({
       query: ({ type, page }) =>
         `/v2.2/films/collections?type=${type}&page=${page}`,
     }),
+    getMovie: builder.query({
+      query: ({
+        countries,
+        genreId,
+        order = 'NUM_VOTE',
+        type = 'FILM',
+        year,
+        page,
+      }) =>
+        `/v2.2/films?countries=${countries}&genres=${genreId}&order=${order}&type=${type}&year=${year}&page=${page}`,
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetMovieTopQuery } = kinopoiskApi;
+export const { useGetMovieTopQuery, useGetMovieQuery } = kinopoiskApi;

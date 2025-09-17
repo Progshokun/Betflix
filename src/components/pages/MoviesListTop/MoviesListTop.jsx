@@ -32,9 +32,6 @@ const MoviesListTop = () => {
         <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
           {movieType.title}
         </Typography>
-        {/* {items.map(item => (
-        <li key={item.kinopoiskId}>{item.nameRu}</li>
-      ))} */}
       </Stack>
       <MoviesList
         movies={data.items}

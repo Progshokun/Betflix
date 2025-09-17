@@ -3,7 +3,6 @@ import { Pagination, Stack } from '@mui/material';
 import MoviesCard from '../MoviesCard';
 
 const MoviesList = ({ movies, totalPages, page, setPage }) => {
-  console.log(movies);
   return (
     <>
       <Stack flexDirection="row" flexWrap="wrap" gap={2} p={3}>
