@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
 import useMovieQuery from '../../../hooks/useMovieQuery';
+import ErrorMessage from '../../ui/ErrorMessage';
 
 const Movies = () => {
   const {
@@ -26,7 +27,7 @@ const Movies = () => {
     slidesToScroll: 3,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 900,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -39,13 +40,6 @@ const Movies = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],
@@ -81,30 +75,22 @@ const Movies = () => {
 
   function serializeDataForCarousel(data) {
     return data?.map(item => (
-      <img
-        src={item?.posterUrl}
-        alt={item?.nameRu}
-        key={item?.kinopoiskId}
-        width={200}
-        height={300}
-      />
+      <RouterLink key={item.kinopoiskId} to={`movie/${item.kinopoiskId}`}>
+        <img src={item.posterUrl} alt={item.nameRu} width={200} height={300} />
+      </RouterLink>
     ));
   }
 
   if (isLoading) return <h1>Loading...</h1>;
 
-  if (hasError) return <h1>Something went wrong...</h1>;
+  if (!hasError) return <ErrorMessage />;
 
   return (
     <div>
       {coruselArr.map(item => (
         <div key={item.url}>
-          <Link
-            component={RouterLink}
-            to={item.url}
-            sx={{ textDecoration: 'none', color: 'black' }}
-          >
-            <h3>{item.title}</h3>
+          <Link component={RouterLink} to={item.url}>
+            <h2>{item.title}</h2>
           </Link>
           <Slider {...settings}>{item.data}</Slider>
         </div>
