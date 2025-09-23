@@ -52,8 +52,6 @@ export const kinopoiskApi = createApi({
     }),
     getSequelsandPrequels: builder.query({
       query: id => `/v2.1/films/${id}/sequels_and_prequels`,
-      transformErrorResponse: response =>
-        response.map(el => ({ ...el, kinopoiskId: el.filmId })),
     }),
     getStaff: builder.query({
       query: id => `/v1/staff?filmId=${id}`,

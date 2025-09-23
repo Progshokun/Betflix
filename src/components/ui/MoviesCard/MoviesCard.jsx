@@ -6,9 +6,13 @@ import styles from './MoviesCard.module.css';
 const MoviesCard = ({ movie }) => {
   return (
     <>
-      <Stack>
+      <Stack alignItems="center">
         <RouterLink
-          to={`/movie/${movie.kinopoiskId}`}
+          to={
+            movie.kinopoiskId
+              ? `/movie/${movie.kinopoiskId}`
+              : `/movie/${movie.filmId}`
+          }
           style={{ textDecoration: 'none' }}
         >
           <img
