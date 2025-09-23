@@ -5,7 +5,7 @@ import Layout from './Layout';
 import ActorsPage from './pages/ActorsDetail';
 import Movies from './pages/Movies';
 import MoviesDetail from './pages/MoviesDetail';
-import MoviesList from './pages/MoviesList';
+import MoviesListMain from './pages/MoviesListMain';
 import MoviesListTop from './pages/MoviesListTop';
 
 const router = createBrowserRouter([
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       })),
       ...MOVIE_LISTS.map(({ url }) => ({
         path: url,
-        element: <MoviesList />,
+        element: <MoviesListMain />,
       })),
       {
         path: '/movie/:id',

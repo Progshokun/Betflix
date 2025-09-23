@@ -1,4 +1,3 @@
-import AcroolCarousel, { AcroolSlideImage } from '@acrool/react-carousel';
 import { Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -7,6 +6,7 @@ import 'slick-carousel/slick/slick.css';
 
 import useMovieQuery from '../../../hooks/useMovieQuery';
 import ErrorMessage from '../../ui/ErrorMessage';
+import MovieSkeleton from './MovieSkeleton';
 
 const Movies = () => {
   const {
@@ -81,14 +81,14 @@ const Movies = () => {
     ));
   }
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <MovieSkeleton />;
 
-  if (!hasError) return <ErrorMessage />;
+  if (hasError) return <ErrorMessage />;
 
   return (
     <div>
-      {coruselArr.map(item => (
-        <div key={item.url}>
+      {coruselArr.map((item, index) => (
+        <div key={index}>
           <Link component={RouterLink} to={item.url}>
             <h2>{item.title}</h2>
           </Link>

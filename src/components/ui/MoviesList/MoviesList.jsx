@@ -5,7 +5,13 @@ import MoviesCard from '../MoviesCard';
 const MoviesList = ({ movies, totalPages, page, setPage }) => {
   return (
     <>
-      <Stack flexDirection="row" flexWrap="wrap" gap={2} p={3}>
+      <Stack
+        flexDirection="row"
+        justifyContent="center"
+        flexWrap="wrap"
+        gap={2}
+        p={3}
+      >
         {movies.map(movie => (
           <MoviesCard key={movie.kinopoiskId} movie={movie} />
         ))}

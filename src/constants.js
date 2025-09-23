@@ -82,18 +82,18 @@ export const MOVIE_LISTS = [
     title: 'Фильмы',
     icon: 'LocalMovies',
     url: '/movies',
-    value: 'TOP_POPULAR_ALL',
+    value: 'FILM',
   },
   {
     title: 'Сериалы',
     icon: 'Reorder',
     url: '/series',
-    value: 'POPULAR_SERIES',
+    value: 'TV_SERIES',
   },
   {
     title: 'Мультфильмы',
     icon: 'Fort',
     url: '/cartoons',
-    value: 'KIDS_ANIMATION_THEME',
+    value: 'FILM',
   },
 ];
