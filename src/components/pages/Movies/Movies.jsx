@@ -73,8 +73,6 @@ const Movies = () => {
     },
   ];
 
-  console.log(responceCartoon?.data?.items);
-
   function serializeDataForCarousel(data) {
     return data?.map(item => (
       <RouterLink key={item.kinopoiskId} to={`movie/${item.kinopoiskId}`}>

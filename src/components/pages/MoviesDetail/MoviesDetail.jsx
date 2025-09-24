@@ -1,11 +1,9 @@
-import { ArrowBack, ListAlt } from '@mui/icons-material';
+import { ArrowBack } from '@mui/icons-material';
 import {
   Box,
   Button,
   Grid,
   Link,
-  List,
-  ListItem,
   Stack,
   Typography,
   useMediaQuery,
@@ -18,10 +16,12 @@ import {
   useGetSequelsandPrequelsQuery,
   useGetStaffQuery,
 } from '../../../services/kinopoiskApi';
+import ErrorMessage from '../../ui/ErrorMessage';
 import MoviesCard from '../../ui/MoviesCard';
+import VideoPlayer from '../../ui/VideoPlayer/VideoPlayer';
+import classes from './MovieDetail.module.css';
 
 const MoviesDetail = () => {
-  const isMobile = useMediaQuery('(max-width:600px)');
   const { id } = useParams();
   const respomseMovie = useGetMovieIdQuery(id);
   const respomseSequelsAndPrquels = useGetSequelsandPrequelsQuery(id);
@@ -42,7 +42,7 @@ const MoviesDetail = () => {
     respomseSequelsAndPrquels.isLoading ||
     respomseStaff.isLoading
   )
-    return <h1>Loading...</h1>;
+    return <ErrorMessage />;
 
   if (respomseMovie.error || respomseStaff.error) return <h1>Error...</h1>;
 
@@ -95,7 +95,13 @@ const MoviesDetail = () => {
             <Grid size={4}>
               {respomseMovie?.data?.genres.map(item => (
                 <Typography key={item.genre}>
-                  {item.genre}
+                  <Link
+                    sx={{
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {item.genre}
+                  </Link>
                   <br />
                 </Typography>
               ))}
@@ -169,14 +175,14 @@ const MoviesDetail = () => {
           <Typography gutterBottom>В главных ролях</Typography>
           {actors
             .map(actor => (
-              <Link component={RouterLink} to={`actor/${actor.staffId}`}>
-                <Typography gutterBottom>{actor.nameRu} </Typography>
+              <Link component={RouterLink} to={`/actor/${actor.staffId}`}>
+                <Typography gutterBottom>{actor.nameRu}</Typography>
               </Link>
             ))
             .slice(0, 10)}
         </Grid>
-        <Grid size={12} justifyContent="center">
-          Player
+        <Grid size={12} justifyContent="center" justifyItems="center" p={4}>
+          <VideoPlayer />
         </Grid>
       </Grid>
       <Typography variant="h5" textAlign="center" gutterBottom>
