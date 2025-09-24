@@ -1,13 +1,5 @@
 import { ArrowBack } from '@mui/icons-material';
-import {
-  Box,
-  Button,
-  Grid,
-  Link,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Box, Button, Grid, Link, Stack, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -19,7 +11,6 @@ import {
 import ErrorMessage from '../../ui/ErrorMessage';
 import MoviesCard from '../../ui/MoviesCard';
 import VideoPlayer from '../../ui/VideoPlayer/VideoPlayer';
-import classes from './MovieDetail.module.css';
 
 const MoviesDetail = () => {
   const { id } = useParams();

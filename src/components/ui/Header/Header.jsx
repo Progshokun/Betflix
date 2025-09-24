@@ -14,6 +14,7 @@ import {
   ListItemIcon,
   ListItemText,
   Slide,
+  Stack,
   Toolbar,
   Typography,
   useScrollTrigger,
@@ -22,6 +23,7 @@ import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { MOVIE_LISTS, TOP_LISTS, iconComponents } from '../../../constants';
+import Search from '../Search';
 
 const Icon = ({ iconName }) => {
   const IconComponent = iconComponents[iconName];
@@ -90,19 +92,27 @@ const Header = () => {
                 </Box>
               </Drawer>
             </nav>
-            <Typography
-              component={RouterLink}
-              to="/"
-              sx={{
-                textDecoration: 'none',
-                color: 'white',
-                fontWeight: 'bold',
-                marginLeft: 2,
-              }}
-              variant="h5"
+            <Stack
+              justifyContent="space-between"
+              flexDirection="row"
+              alignItems="center"
+              width="100%"
             >
-              Betflix
-            </Typography>
+              <Typography
+                component={RouterLink}
+                to="/"
+                sx={{
+                  textDecoration: 'none',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  marginLeft: 2,
+                }}
+                variant="h5"
+              >
+                Betflix
+              </Typography>
+              <Search />
+            </Stack>
           </Toolbar>
         </Container>
       </AppBar>
