@@ -11,7 +11,7 @@ import { useGetMovieQuery } from '../../../services/kinopoiskApi';
 const movieTypes = {
   FILM: 'Фильм',
   TV_SERIES: 'Сериал',
-  MINI_SERIES: 'Мни-сериал',
+  MINI_SERIES: 'Мини-сериал',
   TV_SHOW: 'ТВ-Шоу',
 };
 
@@ -21,23 +21,19 @@ const Search = () => {
   const { countries, genreId, order, type, year, page, keyword } = useSelector(
     state => state.searchQuery,
   );
-  const { data, isLoading } = useGetMovieQuery({
-    countries,
-    genreId,
-    order,
-    type,
-    year,
-    page,
-    keyword,
-  });
+  const { data, isLoading } = useGetMovieQuery(
+    { countries, genreId, order, type, year, page, keyword },
+    { skip: !keyword }, // не делаем запрос, если keyword пустой
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
     const setTimeoutId = setTimeout(() => {
-      dispatch(setSearchQuery({ keyword: input }));
+      dispatch(setSearchQuery({ keyword: input ?? '' }));
     }, 500);
-    return clearTimeout(setTimeoutId);
-  }, [input]);
+
+    return () => clearTimeout(setTimeoutId);
+  }, [input, dispatch]);
 
   return (
     <Autocomplete
@@ -51,27 +47,28 @@ const Search = () => {
       }}
       freeSolo
       getOptionLabel={option =>
-        `${option.nameRu} - ${option.year} - ${movieTypes[option.type]}`
+        `${option.nameRu} - ${option.year} - ${movieTypes[option.type] || ''}`
       }
       options={data ? data.items : []}
       onChange={(_, value) => {
-        navigate(`movie/${value.kinopoiskId}`);
+        if (value) navigate(`movie/${value.kinopoiskId}`);
       }}
       onInputChange={(_, value) => {
-        setInput(value);
+        setInput(value ?? ''); // никогда не undefined
       }}
       renderInput={params => (
         <TextField
           {...params}
           label="Поиск"
-          inputProps={{
-            ...params.inputProps,
-            endAdorment: (
-              <React.Fragment>
+          InputProps={{
+            ...params.InputProps,
+            endAdornment: (
+              <>
                 {isLoading ? (
                   <CircularProgress size={20} color="inherit" />
                 ) : null}
-              </React.Fragment>
+                {params.InputProps.endAdornment}
+              </>
             ),
           }}
         />

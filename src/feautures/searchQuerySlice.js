@@ -21,7 +21,6 @@ export const searchQuerySlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { setSearchQuery } = searchQuerySlice.actions;
 
 export default searchQuerySlice.reducer;

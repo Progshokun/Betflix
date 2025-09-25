@@ -111,15 +111,13 @@ const MoviesDetail = () => {
               <Typography gutterBottom>Кинопоиск</Typography>
             </Grid>
             <Grid size={4}>
-              <Typography>
-                {respomseMovie.data.ratingKinopoisk ? (
-                  <Typography>
-                    {respomseMovie.data.ratingKinopoisk} / 10
-                  </Typography>
-                ) : (
-                  <Typography>Нет оценок</Typography>
-                )}
-              </Typography>
+              {respomseMovie.data.ratingKinopoisk ? (
+                <Typography>
+                  {respomseMovie.data.ratingKinopoisk} / 10
+                </Typography>
+              ) : (
+                <Typography>Нет оценок</Typography>
+              )}
             </Grid>
           </Grid>
           <Grid container justifyContent="space-between">

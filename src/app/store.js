@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import currentQueryReducer from '../feautures/currentQuerySlice';
-import searchQueryReducer from '../feautures/currentQuerySlice';
+import searchQueryReducer from '../feautures/searchQuerySlice';
 import { kinopoiskApi } from '../services/kinopoiskApi';
 
 export const store = configureStore({
