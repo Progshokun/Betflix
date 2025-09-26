@@ -11,6 +11,7 @@ import {
 import ErrorMessage from '../../ui/ErrorMessage';
 import MoviesCard from '../../ui/MoviesCard';
 import VideoPlayer from '../../ui/VideoPlayer/VideoPlayer';
+import MovieDetailSkeleton from './MovieDetailSkeleton';
 
 const MoviesDetail = () => {
   const { id } = useParams();
@@ -33,9 +34,9 @@ const MoviesDetail = () => {
     respomseSequelsAndPrquels.isLoading ||
     respomseStaff.isLoading
   )
-    return <ErrorMessage />;
+    return <MovieDetailSkeleton />;
 
-  if (respomseMovie.error || respomseStaff.error) return <h1>Error...</h1>;
+  if (respomseMovie.error || respomseStaff.error) return <ErrorMessage />;
 
   return (
     <Box m={3}>

@@ -13,19 +13,17 @@ const MovieSkeleton = () => {
             variant="rectangular"
             height="30px"
             width="200px"
-            sx={{ borderRadius: '3px' }}
+            sx={{ borderRadius: 2 }}
           />
           <Stack direction="row" justifyContent="center" alignItems="center">
-            {new Array(6).fill(null).map((_, index) => (
-              <Skeleton
-                key={index}
-                animation="wave"
-                variant="rectangular"
-                height={isMobile ? '300px' : '352px'}
-                width={isMobile ? '100%' : '200px'}
-                sx={{ marginBlock: '3px' }}
-              />
-            ))}
+            <Skeleton
+              key={index}
+              animation="wave"
+              variant="rectangular"
+              height={isMobile ? '300px' : '352px'}
+              width="100%"
+              sx={{ marginBlock: 1, borderRadius: 2 }}
+            />
           </Stack>
         </React.Fragment>
       ))}

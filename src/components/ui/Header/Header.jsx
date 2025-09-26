@@ -1,5 +1,5 @@
+import { Brightness7 } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
-import MovieIcon from '@mui/icons-material/Movie';
 import {
   AppBar,
   Box,
@@ -20,9 +20,11 @@ import {
   useScrollTrigger,
 } from '@mui/material';
 import { useState } from 'react';
+import { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { MOVIE_LISTS, TOP_LISTS, iconComponents } from '../../../constants';
+import { ColorModeContext } from '../../../context/ToogleColorMode';
 import Search from '../Search';
 
 const Icon = ({ iconName }) => {
@@ -32,6 +34,7 @@ const Icon = ({ iconName }) => {
 
 const Header = () => {
   const [isOpen, setisOpen] = useState(false);
+  const { toogleColorTheme } = useContext(ColorModeContext);
 
   const handleDrawerToggle = () => {
     setisOpen(prevState => !prevState);
@@ -97,6 +100,7 @@ const Header = () => {
               flexDirection="row"
               alignItems="center"
               width="100%"
+              gap={2}
             >
               <Typography
                 component={RouterLink}
@@ -112,6 +116,9 @@ const Header = () => {
                 Betflix
               </Typography>
               <Search />
+              <IconButton color="inherit" onClick={toogleColorTheme}>
+                <Brightness7 />
+              </IconButton>
             </Stack>
           </Toolbar>
         </Container>

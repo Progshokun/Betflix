@@ -24,21 +24,29 @@ const Movies = () => {
     infinite: true,
     speed: 300,
     slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToScroll: 4,
     responsive: [
       {
-        breakpoint: 900,
+        breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 5,
           slidesToScroll: 3,
           infinite: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 430,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           initialSlide: 2,
         },
       },

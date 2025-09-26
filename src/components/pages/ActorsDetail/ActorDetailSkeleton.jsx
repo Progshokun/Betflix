@@ -1,6 +1,13 @@
-import { Grid, Skeleton, Stack, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Container,
+  Grid,
+  Skeleton,
+  Stack,
+  useMediaQuery,
+} from '@mui/material';
 
-const MovieDetailSkeleton = () => {
+const ActorDetailSkeleton = () => {
   const isMobile = useMediaQuery('(max-width:600px)');
 
   return (
@@ -21,20 +28,27 @@ const MovieDetailSkeleton = () => {
           <Skeleton
             animation="wave"
             variant="rectangular"
-            height={isMobile ? '570px' : '550px'}
+            height={isMobile ? '570px' : '408px'}
             width="100%"
-            sx={{ borderRadius: 2, marginBottom: isMobile ? 0 : 4 }}
+            sx={{ borderRadius: 2 }}
           />
         </Grid>
       </Grid>
+      <Skeleton
+        animation="wave"
+        variant="rectangular"
+        height={isMobile ? 0 : '32px'}
+        width={170}
+        sx={{ borderRadius: 2, alignSelf: 'center' }}
+      />
       <Grid container>
         <Grid size={12}>
           <Skeleton
             animation="wave"
             variant="rectangular"
-            height="400px"
-            width={isMobile ? '100%' : '550px'}
-            sx={{ borderRadius: 2, justifySelf: 'center' }}
+            height="800px"
+            width="100%"
+            sx={{ borderRadius: 2 }}
           />
         </Grid>
       </Grid>
@@ -42,4 +56,4 @@ const MovieDetailSkeleton = () => {
   );
 };
 
-export default MovieDetailSkeleton;
+export default ActorDetailSkeleton;

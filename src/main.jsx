@@ -5,10 +5,13 @@ import { Provider } from 'react-redux';
 
 import { store } from './app/store';
 import App from './components/App';
+import ToogleColorMode from './context/ToogleColorMode';
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <CssBaseline />
-    <App />
+    <ToogleColorMode>
+      <CssBaseline />
+      <App />
+    </ToogleColorMode>
   </Provider>,
 );

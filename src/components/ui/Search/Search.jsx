@@ -38,12 +38,11 @@ const Search = () => {
   return (
     <Autocomplete
       sx={{
-        width: 300,
-        backgroundColor: 'rgba(255, 255, 255, 0.97)',
+        width: '100%',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
         borderRadius: 4,
-        '&.MuiOutlinedInput-root': {
-          '&fieldset': { border: 'none' },
-        },
+        height: 50,
+        flexGrow: 1,
       }}
       freeSolo
       getOptionLabel={option =>
@@ -58,6 +57,11 @@ const Search = () => {
       }}
       renderInput={params => (
         <TextField
+          sx={{
+            '& .MuiOutlinedInput-notchedOutline': {
+              border: 'none',
+            },
+          }}
           {...params}
           label="Поиск"
           InputProps={{

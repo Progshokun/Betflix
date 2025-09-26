@@ -14,16 +14,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { useGetStaffIdQuery } from '../../../services/kinopoiskApi';
 import ErrorMessage from '../../ui/ErrorMessage';
+import ActorDetailSkeleton from './ActorDetailSkeleton';
 
 const ActorDetail = () => {
   const { id } = useParams();
   const { data, error, isLoading } = useGetStaffIdQuery(id);
   const navigate = useNavigate();
 
-  console.log(data);
-  // console.log(data.profession);
-
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <ActorDetailSkeleton />;
   if (error) return <ErrorMessage />;
 
   return (
@@ -48,7 +46,7 @@ const ActorDetail = () => {
             </Grid>
           </Grid>
           <Grid container justifyContent="space-between">
-            <Grid size={3} gutterBottom>
+            <Grid size={3}>
               <Typography>Год рождения</Typography>
             </Grid>
             <Grid size={5}>
@@ -64,7 +62,7 @@ const ActorDetail = () => {
             </Grid>
           </Grid>
           <Grid container justifyContent="space-between">
-            <Grid size={3} gutterBottom>
+            <Grid size={3}>
               <Typography>Рост</Typography>
             </Grid>
             <Grid size={5}>
@@ -86,7 +84,9 @@ const ActorDetail = () => {
             <Grid size={12}>
               {data.facts ? (
                 data.facts.map(fact => (
-                  <Typography component="p">{fact}</Typography>
+                  <Typography key={Date.now()} component="p">
+                    {fact}
+                  </Typography>
                 ))
               ) : (
                 <Typography component="p">Нет интересных фактов</Typography>
@@ -110,7 +110,12 @@ const ActorDetail = () => {
                 index === self.findIndex(f => f.filmId === film.filmId),
             )
             .map((film, index) => (
-              <Grid container spacing={1} justifyContent="center">
+              <Grid
+                key={film.filmId}
+                container
+                spacing={1}
+                justifyContent="center"
+              >
                 <Grid size={1}>{index + 1}</Grid>
                 <Grid size={10}>
                   <Typography>
