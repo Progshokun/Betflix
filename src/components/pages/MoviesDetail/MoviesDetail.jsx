@@ -120,13 +120,11 @@ const MoviesDetail = () => {
               <Typography gutterBottom>IMDB</Typography>
             </Grid>
             <Grid size={4}>
-              <Typography>
-                {respomseMovie.data.ratingImdb ? (
-                  <Typography>{respomseMovie.data.ratingImdb} / 10</Typography>
-                ) : (
-                  <Typography>Нет оценок</Typography>
-                )}
-              </Typography>
+              {respomseMovie.data.ratingImdb ? (
+                <Typography>{respomseMovie.data.ratingImdb} / 10</Typography>
+              ) : (
+                <Typography>Нет оценок</Typography>
+              )}
             </Grid>
           </Grid>
           <Grid container justifyContent="space-between">
