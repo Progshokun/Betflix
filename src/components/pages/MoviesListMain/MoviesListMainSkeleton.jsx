@@ -52,9 +52,9 @@ const MoviesListMainSkeleton = () => {
             p={3}
             justifyContent={'center'}
           >
-            {new Array(count).fill(null).map((_, idx) => (
+            {new Array(count).fill(null).map((_, index) => (
               <Skeleton
-                key={idx}
+                key={index}
                 animation="wave"
                 variant="rectangular"
                 height={isMobile ? '300px' : '352px'}

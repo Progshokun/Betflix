@@ -87,13 +87,7 @@ const MoviesDetail = () => {
             <Grid size={4}>
               {respomseMovie?.data?.genres.map(item => (
                 <Typography key={item.genre}>
-                  <Link
-                    sx={{
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {item.genre}
-                  </Link>
+                  {item.genre}
                   <br />
                 </Typography>
               ))}

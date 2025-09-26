@@ -1,9 +1,13 @@
 import { Box, Link, Rating, Stack, Tooltip, Typography } from '@mui/material';
+import { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
+import { ColorModeContext } from '../../../context/ToogleColorMode';
 import styles from './MoviesCard.module.css';
 
 const MoviesCard = ({ movie }) => {
+  const { mode } = useContext(ColorModeContext);
+
   return (
     <>
       <Stack alignItems="center">
@@ -23,7 +27,7 @@ const MoviesCard = ({ movie }) => {
           <Typography
             variant="h6"
             textAlign="center"
-            color="black"
+            color={mode === 'light' ? 'black' : 'white'}
             mt={1}
             sx={{ width: 200 }}
           >
