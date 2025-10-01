@@ -11,7 +11,7 @@
 ---
 
 ## 📸 Превью  
-*(сюда можно добавить скриншоты интерфейса — например, `/public/preview.png`)*
+![image alt](https://github.com/Progshokun/Betflix/blob/main/preview.jpg?raw=true)
 
 ---
 
